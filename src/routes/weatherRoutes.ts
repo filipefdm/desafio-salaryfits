@@ -5,10 +5,8 @@ import * as weatherService from "../services/weatherService";
 
 const router = express.Router();
 
-// SALVAR O CLIMA DA CIDADE
 router.post("/save", saveWeather);
 
-// OBTER OS DADOS DE CLIMA ATUAL
 router.get("/current", async (req: Request, res: Response) => {
   try {
     const city = req.query.city as string;
@@ -20,7 +18,7 @@ router.get("/current", async (req: Request, res: Response) => {
 
     const weather: Weather = {
       city: weatherData.city,
-      temperature: weatherData.temperature,
+      temperature: parseFloat((weatherData.temperature - 273.15).toFixed(1)),
       humidity: weatherData.humidity,
       windSpeed: weatherData.windSpeed,
     };
@@ -32,7 +30,6 @@ router.get("/current", async (req: Request, res: Response) => {
   }
 });
 
-// RECUPERAR OS DADOS DE CLIMA SALVOS
 router.get("/saved", async (req: Request, res: Response) => {
   try {
     const savedWeatherData = await getSavedWeatherData();
