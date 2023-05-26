@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import * as weatherService from "../services/weatherService";
 
-// SALVAR O CLIMA
 export const saveWeather = async (req: Request, res: Response) => {
   try {
     const city = req.body.city as string;
@@ -21,7 +20,6 @@ export const saveWeather = async (req: Request, res: Response) => {
   }
 };
 
-// OBTER O CLIMA ATUAL
 export const getCurrentWeather = async (req: Request, res: Response) => {
   try {
     const city = req.query.city as string;
