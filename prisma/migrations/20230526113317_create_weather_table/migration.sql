@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `Weather` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` VARCHAR(191) NOT NULL,
     `city` VARCHAR(191) NOT NULL,
     `temperature` DOUBLE NOT NULL,
     `humidity` INTEGER NOT NULL,
