@@ -3,7 +3,6 @@ import * as weatherService from "../services/weatherService";
 
 const router = express.Router();
 
-// OBTER A PREVISÃO DO TEMPO PARA 5 DIAS:
 router.get("/5days", async (req: Request, res: Response) => {
   try {
     const city = req.query.city as string;
