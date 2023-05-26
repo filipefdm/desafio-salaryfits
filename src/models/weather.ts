@@ -2,20 +2,20 @@ import { PrismaClient } from "@prisma/client";
 
 export interface WeatherData {
   main: {
-    temp: number; // Temperatura em Kelvin
-    humidity: number; // Umidade em percentual
+    temp: number;
+    humidity: number;
   };
   wind: {
-    speed: number; // Velocidade do vento em metros por segundo
+    speed: number;
   };
-  name: string; // Nome da cidade
+  name: string;
 }
 
 export interface Weather {
-  city: string; // Nome da cidade
-  temperature: number; // Temperatura em Kelvin
-  humidity: number; // Umidade em percentual
-  windSpeed: number; // Velocidade do vento em metros por segundo
+  city: string;
+  temperature: number;
+  humidity: number;
+  windSpeed: number;
 }
 
 const prisma = new PrismaClient();
