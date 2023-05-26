@@ -21,7 +21,7 @@ export const saveWeather = async (city: string): Promise<void> => {
 
     const weather: Weather = {
       city: name,
-      temperature: main.temp,
+      temperature: parseFloat((main.temp - 273.15).toFixed(1)),
       humidity: main.humidity,
       windSpeed: wind.speed,
     };
@@ -73,11 +73,14 @@ export const getFiveDayWeatherForecast = async (
 
     const fiveDayForecast: WeatherForecast[] = forecastData.list.map(
       (forecast) => {
+        const temperatureInCelsius = forecast.main.temp - 273.15;
+        const roundedTemperature = temperatureInCelsius.toFixed(1);
+
         return {
           date: forecast.dt_txt,
           weather: forecast.weather[0].main,
           description: forecast.weather[0].description,
-          temperature: forecast.main.temp - 273.15,
+          temperature: parseFloat(roundedTemperature),
         };
       }
     );
