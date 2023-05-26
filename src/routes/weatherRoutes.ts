@@ -5,9 +5,9 @@ import * as weatherService from "../services/weatherService";
 
 const router = express.Router();
 
-router.post("/save", saveWeather);
+router.post("/save-weather", saveWeather);
 
-router.get("/current", async (req: Request, res: Response) => {
+router.get("/current-weather", async (req: Request, res: Response) => {
   try {
     const city = req.query.city as string;
     const weatherData = await weatherService.getCurrentWeather(city);
@@ -30,7 +30,7 @@ router.get("/current", async (req: Request, res: Response) => {
   }
 });
 
-router.get("/saved", async (req: Request, res: Response) => {
+router.get("/saved-weather", async (req: Request, res: Response) => {
   try {
     const savedWeatherData = await getSavedWeatherData();
     res.json(savedWeatherData);
